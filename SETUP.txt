@@ -1,0 +1,76 @@
+IMPORTANT: This version preserves the original event list even before the online database is configured.
+
+To make editing private to you but visible to everyone:
+
+1. Create a free Supabase project at supabase.com.
+2. Your admin email is already set to gracieisbell@gmail.com in schema.sql and config.js.
+3. Run schema.sql in Supabase -> SQL Editor.
+4. In Supabase -> Authentication -> Users, create your account with that same email and a password.
+5. Run seed_events.sql ONCE in SQL Editor. This puts every original calendar event into the shared database.
+6. In Supabase Project Settings -> API, copy your Project URL and anon/public key.
+7. Open config.js and replace:
+   YOUR_SUPABASE_URL
+   YOUR_SUPABASE_ANON_KEY
+   YOUR_ADMIN_EMAIL
+8. Upload index.html and config.js to the same GitHub/Vercel project.
+
+Result:
+- Anyone can view the calendar.
+- Only your authenticated email can add/delete shared events.
+- When you add an event in Admin Login, everyone sees it after refreshing.
+- Row Level Security prevents other visitors from editing, even if they inspect the website code.
+- The original events are bundled into index.html, so a database/setup problem will no longer erase the calendar.
+
+
+Color update:
+- Lavender/Purple = Late Nights & Other Parties
+
+V7 updates:
+- Late nights and party-style events are lavender/purple.
+- Fraternity names appear before event names.
+- Same-day events are sorted by likely time of day.
+- Tailgates appear before late nights.
+- Explicit listed times override automatic ordering.
+
+V8 visual changes:
+- Default event color is light pink.
+- Parents/family = green.
+- Formals/date parties = purple.
+- Gameday/football = orange.
+- Bar tabs = yellow.
+- Holidays = red.
+- Fraternity names are color-coded in the event title.
+- Removed the duplicate fraternity badge on the right.
+
+V9 schedule cleanup:
+- FIJI tailgates and late nights are separate events.
+- Kappa Sigma Parents Weekend Tailgate and Late Night are separate events.
+- Clear joint events are combined into one shared row.
+- Joint events appear when either fraternity filter is selected.
+- Admin editor now has an optional "Joint with" field.
+- Same-day sorting still places tailgates before late nights.
+
+V10 changes:
+- Generic holidays are no longer attached to a fraternity.
+- Duplicate Labor Day / Thanksgiving Break rows were consolidated.
+- Event-type color coding was removed completely.
+- The only event colors now represent fraternities.
+- Joint events visually combine the colors of both fraternities.
+- Holidays use a neutral gray style.
+- Header redesigned for cleaner contrast and readability.
+
+V11 changes:
+- Soft blush/cream/lilac visual redesign.
+- Lighter, more feminine header and controls.
+- Same-fraternity tailgate + late night pairs on the same date are combined into one event.
+- Fraternity colors remain the only meaningful event colors.
+
+V12 final visual cleanup:
+- Mostly white/cream design.
+- Fraternity colors are now small accents instead of full card backgrounds.
+- Cleaner header and lower visual clutter.
+
+V13 visual update:
+- Event cards have stronger borders and soft shadows.
+- Cards lift slightly on hover.
+- Background is a touch darker so white event cards stand out more.

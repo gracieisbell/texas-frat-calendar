@@ -1,0 +1,788 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Texas Frat Social Calendar — Fall 2026</title>
+<style>
+*{box-sizing:border-box} :root{--text:#231b29;--muted:#7d7284;--line:#e9e2ed}
+body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:linear-gradient(180deg,#fbf8ff,#f7f5fb 55%,#fff9f3);color:var(--text)}
+header{padding:42px max(20px,6vw) 24px;border-bottom:1px solid var(--line);background:linear-gradient(135deg,#fff,#f8efff 55%,#fff5ea)}
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:22px}.k{font-size:11px;letter-spacing:.18em;font-weight:800;color:#b42372;margin-bottom:8px}
+h1{font-family:Georgia,serif;font-size:clamp(36px,5.5vw,68px);line-height:.98;margin:0;letter-spacing:-.03em}header p{color:var(--muted);margin:12px 0 0}
+.actions{display:flex;gap:8px;flex-wrap:wrap}.btn{border:0;border-radius:999px;padding:10px 14px;cursor:pointer;background:linear-gradient(135deg,#7c3aed,#db2777);color:#fff;font-weight:700}.btn.secondary{background:#fff;color:#5b21b6;border:1px solid #ddd2ea}
+main{padding:24px max(20px,6vw) 70px}.tools{display:grid;grid-template-columns:1fr 190px;gap:10px;margin-bottom:14px}.tools input,.tools select{width:100%;padding:11px 12px;border-radius:12px;border:1px solid var(--line);background:#fff}
+.filters{display:flex;gap:7px;flex-wrap:wrap;position:sticky;top:0;padding:10px 0;background:rgba(248,246,251,.92);backdrop-filter:blur(10px);z-index:10}.chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 12px;cursor:pointer}.chip.active{background:linear-gradient(135deg,#7c3aed,#db2777);color:#fff;border-color:transparent}
+.month{margin:34px 0}.month>h2{font-family:Georgia,serif;font-size:28px;margin:0 0 8px;color:#52286f}.week{display:flex;align-items:center;gap:10px;margin:24px 0 8px;color:#796a83;font-size:10px;text-transform:uppercase;letter-spacing:.08em;font-weight:800}.week:before,.week:after{content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,#d8cfe0,transparent)}
+.dayhead{display:flex;justify-content:space-between;align-items:baseline;margin:14px 0 5px;padding:7px 10px;border-radius:9px;background:#fff;border:1px solid #ece5f0}.dayhead strong{font-family:Georgia,serif;font-size:16px}.dayhead span{font-size:10px;color:#8a8090;font-weight:700}
+.event{display:grid;grid-template-columns:42px 1fr;gap:9px;align-items:center;margin:3px 0;padding:8px 10px;border-radius:10px;overflow:hidden}.datebox{text-align:center;background:rgba(255,255,255,.58);border-radius:8px;padding:4px 2px}.datebox .d{font-family:Georgia,serif;font-size:18px;font-weight:700}.datebox .w{font-size:8px;letter-spacing:.08em;color:#776d7e}.event h3{font-size:13px;margin:0 0 2px}.meta{font-size:10px;color:#6e6475}.badge{border-radius:999px;padding:4px 7px;color:#fff;font-size:9px;font-weight:800;white-space:nowrap}
+.frat-fiji{background:#6d28d9}.frat-texas-delts{background:#c2410c}.frat-kappa-sigma{background:#15803d}.frat-phi-psi{background:#d97706}.frat-sig-ep{background:#b91c1c}.frat-kappa-alpha{background:#ca8a04;color:#2b2110}.frat-zbt{background:#0284c7}.frat-sae{background:#7e22ce}.frat-holiday{background:#b7791f}
+.formal{background:linear-gradient(135deg,#fce7f3,#f5d0fe 60%,#ede9fe)}.formal h3{color:#86198f}.football{background:linear-gradient(135deg,#ffedd5,#fed7aa 60%,#fff7ed)}.football h3{color:#9a3412}.bar{background:linear-gradient(135deg,#dbeafe,#bfdbfe 60%,#e0f2fe)}.bar h3{color:#1d4ed8}.parents{background:linear-gradient(135deg,#dcfce7,#bbf7d0 60%,#ecfdf5)}.parents h3{color:#166534}.holiday{background:linear-gradient(135deg,#fff7d6,#fef3c7 60%,#fffbea);border:1px dashed #d2b65c}.holiday h3{color:#92400e}.other{background:linear-gradient(135deg,#f8fafc,#eef2f7)}.other h3{color:#334155}.today{outline:2px solid #f59e0b}.empty{padding:40px 0;color:var(--muted)}
+.modal{position:fixed;inset:0;background:rgba(22,16,29,.48);display:flex;align-items:center;justify-content:center;padding:18px;z-index:100;backdrop-filter:blur(8px)}.hidden{display:none!important}.card{width:min(620px,100%);max-height:90vh;overflow:auto;background:#fff;border-radius:20px;padding:20px;box-shadow:0 30px 80px rgba(0,0,0,.2)}.cardhead{display:flex;justify-content:space-between;gap:16px}.card h2{font-family:Georgia,serif;font-size:28px;margin:0 0 14px}.close{border:0;background:#f3eef6;border-radius:50%;width:36px;height:36px;font-size:22px;cursor:pointer}.form{display:grid;gap:11px}.form label{display:grid;gap:5px;font-size:11px;font-weight:800;color:#63576b}.form input,.form select{width:100%;padding:10px 11px;border:1px solid var(--line);border-radius:10px}.row{display:grid;grid-template-columns:1fr 1fr;gap:9px}.status{font-size:11px;color:#7a7181}.admin-list{margin-top:18px;padding-top:14px;border-top:1px solid #eee8f1}.admin-item{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px solid #f1edf3}.admin-item span{font-size:10px;color:#776d7e}.danger{border:0;border-radius:999px;background:#fee2e2;color:#991b1b;padding:5px 8px;font-size:9px;cursor:pointer}
+footer{padding:22px max(20px,6vw);border-top:1px solid var(--line);color:#7a7181;font-size:11px}
+@media(max-width:700px){.head{flex-direction:column;align-items:flex-start}.tools{grid-template-columns:1fr}.filters{overflow-x:auto;flex-wrap:nowrap}.chip{flex:0 0 auto}.event{grid-template-columns:38px 1fr}.dayhead{flex-direction:column;align-items:flex-start;gap:2px}.row{grid-template-columns:1fr}}
+
+/* V7 refinements */
+.title-frat{font-weight:900;letter-spacing:.01em}
+.party{
+  background:linear-gradient(135deg,#e9d5ff 0%,#ddd6fe 45%,#f5d0fe 100%)!important;
+}
+.party h3{color:#6b21a8!important}
+.party .datebox{background:rgba(255,255,255,.62)!important}
+
+
+/* V8 requested color system */
+
+/* Default: everything light pink */
+.event{
+  background:linear-gradient(135deg,#fff1f5 0%,#ffe4ec 58%,#fff7f9 100%)!important;
+}
+.event h3{color:#5f3342!important}
+
+/* Parents / family = green */
+.parents{
+  background:linear-gradient(135deg,#dcfce7 0%,#bbf7d0 58%,#ecfdf5 100%)!important;
+}
+.parents h3{color:#166534!important}
+
+/* Formals / date parties = purple */
+.formal{
+  background:linear-gradient(135deg,#ede9fe 0%,#ddd6fe 58%,#f5f3ff 100%)!important;
+}
+.formal h3{color:#6d28d9!important}
+
+/* Gameday / football = orange */
+.football{
+  background:linear-gradient(135deg,#ffedd5 0%,#fed7aa 58%,#fff7ed 100%)!important;
+}
+.football h3{color:#9a3412!important}
+
+/* Bar tabs = yellow */
+.bar{
+  background:linear-gradient(135deg,#fef9c3 0%,#fde68a 58%,#fffbea 100%)!important;
+}
+.bar h3{color:#854d0e!important}
+
+/* Holidays = red */
+.holiday{
+  background:linear-gradient(135deg,#fee2e2 0%,#fecaca 58%,#fff1f2 100%)!important;
+  border:1px dashed #ef4444!important;
+}
+.holiday h3{color:#b91c1c!important}
+
+/* Parties now use default light pink */
+.party{
+  background:linear-gradient(135deg,#fff1f5 0%,#ffe4ec 58%,#fff7f9 100%)!important;
+}
+.party h3{color:#5f3342!important}
+
+/* Other = default light pink */
+.other{
+  background:linear-gradient(135deg,#fff1f5 0%,#ffe4ec 58%,#fff7f9 100%)!important;
+}
+.other h3{color:#5f3342!important}
+
+/* Fraternity name colors */
+.title-frat{
+  font-weight:900;
+}
+.frat-title-fiji{color:#6d28d9!important}
+.frat-title-texas-delts{color:#c2410c!important}
+.frat-title-kappa-sigma{color:#15803d!important}
+.frat-title-phi-psi{color:#d97706!important}
+.frat-title-sig-ep{color:#b91c1c!important}
+.frat-title-kappa-alpha{color:#a16207!important}
+.frat-title-zbt{color:#0284c7!important}
+.frat-title-sae{color:#7e22ce!important}
+
+
+.joint-plus{color:#8b7b90;font-weight:900;padding:0 1px}
+
+/* V10 — fraternity-only color system + improved readability */
+
+:root{
+  --ink:#1f2937;
+  --muted:#667085;
+  --line:#e5e7eb;
+  --paper:#fffdf8;
+  --cream:#faf7f1;
+  --header:#18202b;
+}
+
+body{
+  background:
+    radial-gradient(circle at 15% 0%,rgba(255,255,255,.9),transparent 28%),
+    linear-gradient(180deg,#f7f3ec 0%,#fbfaf7 48%,#f8f6f2 100%)!important;
+  color:var(--ink)!important;
+}
+
+/* Prettier header */
+header{
+  position:relative;
+  overflow:hidden;
+  padding:54px max(22px,7vw) 34px!important;
+  background:
+    radial-gradient(circle at 85% 20%,rgba(255,255,255,.08),transparent 25%),
+    radial-gradient(circle at 10% 100%,rgba(255,255,255,.05),transparent 28%),
+    linear-gradient(135deg,#1f2937 0%,#111827 55%,#253247 100%)!important;
+  border-bottom:0!important;
+  color:white;
+}
+header:after{
+  content:"";
+  position:absolute;
+  inset:auto 0 0;
+  height:5px;
+  background:linear-gradient(90deg,#6d28d9,#c2410c,#15803d,#d97706,#b91c1c,#ca8a04,#0284c7,#7e22ce);
+}
+header h1{
+  color:white!important;
+  font-size:clamp(40px,6vw,76px)!important;
+  line-height:.94!important;
+  text-shadow:0 2px 18px rgba(0,0,0,.18);
+}
+header p{
+  color:#d1d5db!important;
+  font-size:14px;
+  max-width:620px;
+}
+header .k{
+  color:#f7d7e6!important;
+  letter-spacing:.22em!important;
+}
+.header-row,.head{
+  align-items:center!important;
+}
+.actions .btn.secondary{
+  background:rgba(255,255,255,.10)!important;
+  color:white!important;
+  border:1px solid rgba(255,255,255,.24)!important;
+}
+.actions .btn.secondary:hover{
+  background:rgba(255,255,255,.18)!important;
+}
+.actions .btn{
+  background:#fff!important;
+  color:#18202b!important;
+  box-shadow:0 7px 20px rgba(0,0,0,.18);
+}
+
+/* Filters */
+.filters{
+  background:rgba(250,247,241,.92)!important;
+  border-bottom:1px solid rgba(229,231,235,.7);
+}
+.chip{
+  color:#374151!important;
+  border-color:#ddd7cf!important;
+}
+.chip.active{
+  background:#202938!important;
+  color:white!important;
+  box-shadow:none!important;
+}
+
+/* Months / days */
+.month>h2{
+  color:#202938!important;
+  letter-spacing:-.02em;
+}
+.dayhead{
+  background:#fff!important;
+  border-color:#e7e1d9!important;
+}
+.dayhead strong{color:#202938!important}
+.week{color:#7a7269!important}
+
+/* REMOVE ALL EVENT-TYPE COLORS */
+.formal,.football,.bar,.parents,.party,.holiday,.other,
+.cat-formal,.cat-football,.cat-bar,.cat-parents,.cat-party,.cat-holiday,.cat-other{
+  background:unset!important;
+  border:0!important;
+}
+.formal h3,.football h3,.bar h3,.parents h3,.party h3,.holiday h3,.other h3,
+.cat-formal h3,.cat-football h3,.cat-bar h3,.cat-parents h3,.cat-party h3,.cat-holiday h3,.cat-other h3{
+  color:inherit!important;
+}
+
+/* Base event */
+.event{
+  color:#20242a!important;
+  border:1px solid rgba(0,0,0,.06)!important;
+  box-shadow:0 2px 8px rgba(17,24,39,.045);
+}
+.event h3{
+  color:#20242a!important;
+  font-weight:650;
+}
+.event .meta{color:#59636f!important}
+.event .datebox{
+  background:rgba(255,255,255,.72)!important;
+  border:1px solid rgba(255,255,255,.78);
+}
+
+/* FIJI */
+.event-fiji{
+  background:#f0eaff!important;
+  border-left:5px solid #6d28d9!important;
+}
+/* Texas Delts */
+.event-texas-delts{
+  background:#fff0e8!important;
+  border-left:5px solid #c2410c!important;
+}
+/* Kappa Sigma */
+.event-kappa-sigma{
+  background:#eaf8ef!important;
+  border-left:5px solid #15803d!important;
+}
+/* Phi Psi */
+.event-phi-psi{
+  background:#fff6df!important;
+  border-left:5px solid #d97706!important;
+}
+/* Sig Ep */
+.event-sig-ep{
+  background:#fdecec!important;
+  border-left:5px solid #b91c1c!important;
+}
+/* Kappa Alpha */
+.event-kappa-alpha{
+  background:#fff8d8!important;
+  border-left:5px solid #ca8a04!important;
+}
+/* ZBT */
+.event-zbt{
+  background:#e9f6fd!important;
+  border-left:5px solid #0284c7!important;
+}
+/* SAE */
+.event-sae{
+  background:#f4eafd!important;
+  border-left:5px solid #7e22ce!important;
+}
+/* Holidays are neutral, not frat-coded */
+.event-holiday{
+  background:#f2f3f5!important;
+  border-left:5px solid #6b7280!important;
+}
+.event-holiday h3{color:#374151!important}
+
+/* Joint events combine fraternity colors without category meaning */
+.event-joint.event-fiji.event-zbt{
+  background:linear-gradient(90deg,#f0eaff 0%,#f0eaff 48%,#e9f6fd 52%,#e9f6fd 100%)!important;
+  border-left:5px solid #6d28d9!important;
+  border-right:5px solid #0284c7!important;
+}
+.event-joint.event-sig-ep.event-zbt{
+  background:linear-gradient(90deg,#fdecec 0%,#fdecec 48%,#e9f6fd 52%,#e9f6fd 100%)!important;
+  border-left:5px solid #b91c1c!important;
+  border-right:5px solid #0284c7!important;
+}
+.event-joint.event-zbt.event-sae{
+  background:linear-gradient(90deg,#e9f6fd 0%,#e9f6fd 48%,#f4eafd 52%,#f4eafd 100%)!important;
+  border-left:5px solid #0284c7!important;
+  border-right:5px solid #7e22ce!important;
+}
+.event-joint.event-sig-ep.event-sae{
+  background:linear-gradient(90deg,#fdecec 0%,#fdecec 48%,#f4eafd 52%,#f4eafd 100%)!important;
+  border-left:5px solid #b91c1c!important;
+  border-right:5px solid #7e22ce!important;
+}
+.event-joint.event-fiji.event-zbt .datebox,
+.event-joint.event-sig-ep.event-zbt .datebox,
+.event-joint.event-zbt.event-sae .datebox,
+.event-joint.event-sig-ep.event-sae .datebox{
+  background:rgba(255,255,255,.80)!important;
+}
+
+.today{
+  outline:2px solid #111827!important;
+  outline-offset:2px;
+}
+
+/* Fraternity names remain the strongest color cue */
+.frat-title-fiji{color:#5b21b6!important}
+.frat-title-texas-delts{color:#a83a0b!important}
+.frat-title-kappa-sigma{color:#126a34!important}
+.frat-title-phi-psi{color:#a85d05!important}
+.frat-title-sig-ep{color:#a41717!important}
+.frat-title-kappa-alpha{color:#946406!important}
+.frat-title-zbt{color:#036d9e!important}
+.frat-title-sae{color:#6b1fad!important}
+
+.title-frat{
+  font-weight:900!important;
+}
+
+.tools input,.tools select{
+  border-color:#ddd8d1!important;
+  color:#27303b!important;
+  background:#fff!important;
+}
+
+footer{
+  color:#74706a!important;
+  background:#f7f3ed!important;
+  border-color:#e6dfd6!important;
+}
+
+@media(max-width:700px){
+  header{
+    padding-top:38px!important;
+  }
+  header h1{
+    font-size:42px!important;
+  }
+}
+
+
+/* V11 — soft blush / sorority-friendly redesign */
+
+:root{
+  --ink:#4a3b46;
+  --muted:#8b7d86;
+  --line:#eadfe5;
+  --cream:#fffaf7;
+  --blush:#fdf1f5;
+  --rose:#d98aa4;
+  --lav:#b8a6d9;
+}
+
+body{
+  background:
+    radial-gradient(circle at 8% 0%,rgba(255,225,236,.72),transparent 26%),
+    radial-gradient(circle at 92% 6%,rgba(235,226,255,.75),transparent 28%),
+    linear-gradient(180deg,#fffafc 0%,#fffaf7 48%,#fbf7fb 100%)!important;
+  color:var(--ink)!important;
+}
+
+/* bright feminine header */
+header{
+  position:relative;
+  overflow:hidden;
+  padding:50px max(22px,7vw) 34px!important;
+  background:
+    radial-gradient(circle at 88% 18%,rgba(255,255,255,.72),transparent 20%),
+    radial-gradient(circle at 10% 90%,rgba(255,255,255,.48),transparent 24%),
+    linear-gradient(135deg,#fde8ef 0%,#f8eefe 50%,#fff3ea 100%)!important;
+  color:#5a4351!important;
+  border-bottom:1px solid #eadfe5!important;
+}
+
+header:before{
+  content:"✦";
+  position:absolute;
+  right:8%;
+  top:20px;
+  font-size:34px;
+  color:rgba(189,145,174,.35);
+}
+header:after{
+  content:"♡";
+  position:absolute;
+  right:13%;
+  bottom:16px;
+  height:auto!important;
+  background:none!important;
+  font-size:28px;
+  color:rgba(180,150,201,.34);
+}
+
+header h1{
+  color:#553f4d!important;
+  font-family:Georgia,"Times New Roman",serif!important;
+  font-size:clamp(40px,6vw,72px)!important;
+  line-height:.98!important;
+  text-shadow:none!important;
+  letter-spacing:-.025em;
+}
+
+header p{
+  color:#8b7080!important;
+  font-size:14px!important;
+  max-width:620px;
+}
+
+header .k{
+  color:#b76d8d!important;
+  letter-spacing:.22em!important;
+}
+
+.actions .btn{
+  background:#fff!important;
+  color:#7e5870!important;
+  border:1px solid #ecdbe4!important;
+  box-shadow:0 8px 22px rgba(171,127,149,.12)!important;
+}
+.actions .btn:hover{
+  background:#fff7fa!important;
+}
+.actions .btn.secondary{
+  background:rgba(255,255,255,.70)!important;
+  color:#7e5870!important;
+  border:1px solid #e8d8e0!important;
+}
+
+/* toolbar and filters */
+.tools input,.tools select{
+  background:#fffefe!important;
+  border:1px solid #eadfe5!important;
+  color:#4f4149!important;
+  box-shadow:0 4px 14px rgba(148,111,130,.05);
+}
+
+.filters{
+  background:rgba(255,250,247,.90)!important;
+  border-bottom:1px solid rgba(234,223,229,.8)!important;
+}
+
+.chip{
+  background:#fff!important;
+  color:#6f5a67!important;
+  border:1px solid #eadfe5!important;
+  box-shadow:0 3px 10px rgba(150,119,134,.04);
+}
+.chip.active{
+  background:#f3dce7!important;
+  color:#6d4358!important;
+  border-color:#e1bdcf!important;
+  box-shadow:0 4px 12px rgba(170,121,148,.10)!important;
+}
+
+/* headings */
+.month>h2{
+  color:#6a4c5c!important;
+  font-family:Georgia,"Times New Roman",serif!important;
+  font-size:30px!important;
+}
+.week{
+  color:#a08d98!important;
+}
+.dayhead{
+  background:rgba(255,255,255,.88)!important;
+  border:1px solid #eadfe5!important;
+  box-shadow:0 4px 12px rgba(151,119,134,.04);
+}
+.dayhead strong{
+  color:#6b5361!important;
+}
+
+/* softer event cards */
+.event{
+  border-radius:14px!important;
+  border:1px solid rgba(214,195,204,.55)!important;
+  box-shadow:0 5px 14px rgba(123,91,108,.05)!important;
+  padding:9px 11px!important;
+}
+.event h3{
+  color:#51444c!important;
+  font-weight:650!important;
+}
+.event .meta{
+  color:#877984!important;
+}
+.event .datebox{
+  background:rgba(255,255,255,.76)!important;
+  border:1px solid rgba(255,255,255,.85)!important;
+}
+
+/* fraternity colors only, all softened for readability */
+.event-fiji{
+  background:#f2edff!important;
+  border-left:5px solid #8b6fd1!important;
+}
+.event-texas-delts{
+  background:#fff0e8!important;
+  border-left:5px solid #d98b63!important;
+}
+.event-kappa-sigma{
+  background:#eef9f1!important;
+  border-left:5px solid #6ca77d!important;
+}
+.event-phi-psi{
+  background:#fff7e7!important;
+  border-left:5px solid #d9a74f!important;
+}
+.event-sig-ep{
+  background:#fff0f0!important;
+  border-left:5px solid #d77b7b!important;
+}
+.event-kappa-alpha{
+  background:#fff9e6!important;
+  border-left:5px solid #d8b85f!important;
+}
+.event-zbt{
+  background:#eef8fd!important;
+  border-left:5px solid #6fa9c7!important;
+}
+.event-sae{
+  background:#f6effd!important;
+  border-left:5px solid #a77ac7!important;
+}
+.event-holiday{
+  background:#f7f4f6!important;
+  border-left:5px solid #b3a7ae!important;
+}
+
+/* title colors */
+.frat-title-fiji{color:#7658c3!important}
+.frat-title-texas-delts{color:#c66f46!important}
+.frat-title-kappa-sigma{color:#4f8d62!important}
+.frat-title-phi-psi{color:#b9852f!important}
+.frat-title-sig-ep{color:#c96565!important}
+.frat-title-kappa-alpha{color:#b79638!important}
+.frat-title-zbt{color:#4f91b5!important}
+.frat-title-sae{color:#9564b6!important}
+
+.title-frat{
+  font-weight:900!important;
+}
+
+.today{
+  outline:2px solid #d8a4ba!important;
+  outline-offset:2px!important;
+}
+
+footer{
+  background:#fff8fb!important;
+  color:#9b8792!important;
+  border-top:1px solid #eadfe5!important;
+}
+
+
+/* V12 — cleaner, less colorful final design */
+body{
+  background:#fbfaf8!important;
+  color:#463f43!important;
+}
+
+header{
+  background:linear-gradient(180deg,#fffdfc 0%,#fbf6f7 100%)!important;
+  border-bottom:1px solid #eee7e8!important;
+  color:#4c4147!important;
+  padding:48px max(22px,7vw) 30px!important;
+}
+header:before,header:after{display:none!important}
+header h1{
+  color:#493f45!important;
+  text-shadow:none!important;
+}
+header p{color:#8a7d83!important}
+header .k{color:#b77f96!important}
+
+.actions .btn,
+.actions .btn.secondary{
+  background:#fff!important;
+  color:#6f5964!important;
+  border:1px solid #e6dcdf!important;
+  box-shadow:0 4px 12px rgba(80,60,70,.05)!important;
+}
+
+.filters{
+  background:rgba(251,250,248,.94)!important;
+}
+.chip{
+  background:#fff!important;
+  color:#625960!important;
+}
+.chip.active{
+  background:#eee5e9!important;
+  color:#4e4148!important;
+  border-color:#ded0d6!important;
+}
+
+/* Keep cards almost neutral. Fraternity color is only an accent. */
+.event,
+.event-fiji,
+.event-texas-delts,
+.event-kappa-sigma,
+.event-phi-psi,
+.event-sig-ep,
+.event-kappa-alpha,
+.event-zbt,
+.event-sae{
+  background:#fff!important;
+}
+
+.event{
+  border-top:1px solid #eee9e6!important;
+  border-right:1px solid #eee9e6!important;
+  border-bottom:1px solid #eee9e6!important;
+  box-shadow:0 3px 10px rgba(55,45,50,.035)!important;
+}
+
+.event-fiji{border-left:4px solid #8b6fd1!important}
+.event-texas-delts{border-left:4px solid #d98b63!important}
+.event-kappa-sigma{border-left:4px solid #6ca77d!important}
+.event-phi-psi{border-left:4px solid #d9a74f!important}
+.event-sig-ep{border-left:4px solid #d77b7b!important}
+.event-kappa-alpha{border-left:4px solid #d8b85f!important}
+.event-zbt{border-left:4px solid #6fa9c7!important}
+.event-sae{border-left:4px solid #a77ac7!important}
+
+.event-holiday{
+  background:#f7f6f4!important;
+  border-left:4px solid #aaa2a6!important;
+}
+
+.event-joint{
+  background:#fff!important;
+}
+
+.event .datebox{
+  background:#faf8f7!important;
+  border:1px solid #eee8e6!important;
+}
+
+.dayhead{
+  background:#fdfcfb!important;
+  box-shadow:none!important;
+}
+.month>h2{color:#51464c!important}
+footer{background:#faf7f6!important}
+
+
+/* V13 — make event cards pop without adding more color */
+.event{
+  background:#ffffff!important;
+  border-top:1px solid #e7dfdc!important;
+  border-right:1px solid #e7dfdc!important;
+  border-bottom:1px solid #e7dfdc!important;
+  box-shadow:
+    0 7px 18px rgba(55,45,50,.08),
+    0 1px 2px rgba(55,45,50,.05)!important;
+  transform:translateY(0);
+  transition:transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+}
+
+.event:hover{
+  transform:translateY(-2px);
+  box-shadow:
+    0 12px 26px rgba(55,45,50,.11),
+    0 2px 4px rgba(55,45,50,.06)!important;
+  border-color:#ddd3d0!important;
+}
+
+.event .datebox{
+  background:#f7f3f1!important;
+  border:1px solid #e7dfdc!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.8);
+}
+
+.dayhead{
+  background:#fbf8f6!important;
+  border:1px solid #e7dfdc!important;
+}
+
+.month{
+  padding-bottom:8px;
+}
+
+body{
+  background:
+    linear-gradient(180deg,#fbfaf8 0%,#f6f2ef 100%)!important;
+}
+
+</style>
+</head>
+<body>
+<header><div class="head"><div><div class="k">FALL 2026</div><h1>Texas Frat Social Calendar</h1><p>Fall 2026 social calendar — simple, organized, and easy to scan.</p></div><div class="actions"><button id="adminBtn" class="btn secondary">Admin Login</button><button id="todayBtn" class="btn">Jump to today</button></div></div></header>
+<main><div class="tools"><input id="search" type="search" placeholder="Search events…"><select id="month"><option value="all">All months</option><option value="7">August</option><option value="8">September</option><option value="9">October</option><option value="10">November</option><option value="11">December</option></select></div><div id="filters" class="filters"></div><div id="calendar"></div></main>
+<footer>The public can view. Only the configured admin account can change the shared online calendar.</footer>
+
+<div id="modal" class="modal hidden"><div class="card"><div class="cardhead"><div><div class="k">PRIVATE ADMIN</div><h2>Manage calendar</h2></div><button id="close" class="close">×</button></div>
+<div id="loginPanel" class="form"><label>Email<input id="email" type="email"></label><label>Password<input id="password" type="password"></label><button id="login" class="btn">Sign in</button><div id="loginStatus" class="status"></div></div>
+<div id="editorPanel" class="hidden"><div class="form"><label>Fraternity<select id="frat"><option>FIJI</option><option>Texas Delts</option><option>Kappa Sigma</option><option>Phi Psi</option><option>Sig Ep</option><option>Kappa Alpha</option><option>ZBT</option><option>SAE</option></select></label><label>Joint with (optional)<select id="jointFrat"><option value="">None</option><option>FIJI</option><option>Texas Delts</option><option>Kappa Sigma</option><option>Phi Psi</option><option>Sig Ep</option><option>Kappa Alpha</option><option>ZBT</option><option>SAE</option></select></label><label>Event name<input id="name"></label><div class="row"><label>Date<input id="date" type="date"></label><label>Time<input id="time" type="time"></label></div><label>Category<select id="category"><option value="formal">Date Party / Formal</option><option value="football">Football Event</option><option value="bar">Bar Tab</option><option value="parents">Parents / Family</option><option value="other">Other</option></select></label><button id="save" class="btn">Add Event</button><button id="logout" class="btn secondary">Sign out</button><div id="editorStatus" class="status"></div></div><div id="adminList" class="admin-list"></div></div></div></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script>
+const BUNDLED_EVENTS = [{"date":"2026-08-22","frat":"FIJI","name":"Bid Day 1.0"},{"date":"2026-08-22","frat":"SAE","name":"Bid Day"},{"date":"2026-08-22","frat":"Sig Ep + ZBT","name":"Bid Day 1.0 @ ZBT"},{"date":"2026-08-23","frat":"FIJI","name":"Bid Day 2.0"},{"date":"2026-08-23","frat":"Kappa Alpha","name":"Bid Day Party"},{"date":"2026-08-23","frat":"SAE","name":"Bid Day 2.0"},{"date":"2026-08-23","frat":"Sig Ep + ZBT","name":"Bid Day 2.0 @ Sig Ep"},{"date":"2026-08-23","frat":"Texas Delts","name":"Bid Day 2.0"},{"date":"2026-08-24","frat":"FIJI","name":"1st Day of School"},{"date":"2026-08-24","frat":"Kappa Alpha","name":"First Day of Classes"},{"date":"2026-08-24","frat":"Kappa Sigma","name":"Back to School Party"},{"date":"2026-08-24","frat":"Phi Psi","name":"First Day of Class"},{"date":"2026-08-24","frat":"SAE","name":"First Day of Classes"},{"date":"2026-08-24","frat":"Sig Ep","name":"1st day of class"},{"date":"2026-08-26","frat":"Phi Psi","name":"Back 2 School Tab @ Vulcan Gas Company"},{"date":"2026-08-27","frat":"Kappa Alpha","name":"Chapter Tab"},{"date":"2026-08-27","frat":"Phi Psi","name":"Bid Day Party ft. NIIKO X SWAE"},{"date":"2026-08-27","frat":"Sig Ep","name":"Back to School"},{"date":"2026-08-27","frat":"Texas Delts","name":"Back To School Tab @ Victory Lap"},{"date":"2026-08-27","frat":"ZBT","name":"Back 2 School Tab"},{"date":"2026-08-28","frat":"FIJI","name":"Fiji Island"},{"date":"2026-08-29","frat":"ZBT + SAE","name":"Back 2 School Party"},{"date":"2026-09-01","frat":"Kappa Sigma","name":"Pledgeline '26"},{"date":"2026-09-01","frat":"SAE","name":"Pledge Line"},{"date":"2026-09-04","frat":"Kappa Alpha","name":"Olympus"},{"date":"2026-09-04","frat":"Phi Psi","name":"Pledgeline @ Maggie Mae's"},{"date":"2026-09-05","frat":"FIJI","name":"Texas State Tailgate + Pledgeline Late Night"},{"date":"2026-09-05","frat":"Kappa Alpha","name":"Texas State Tailgate"},{"date":"2026-09-05","frat":"Kappa Sigma","name":"Texas State Tailgate"},{"date":"2026-09-05","frat":"Phi Psi","name":"TX State Tailgate with BBQ + Fall '26 Late Night"},{"date":"2026-09-05","frat":"SAE","name":"Texas State Home","time":"2:30 PM"},{"date":"2026-09-05","frat":"Sig Ep","name":"Texas State Tailgate"},{"date":"2026-09-05","frat":"Texas Delts","name":"TXST Tailgate w/ Kupyd"},{"date":"2026-09-05","frat":"ZBT","name":"Texas St Tailgate"},{"date":"2026-09-06","frat":"Holiday","name":"Labor Day","category":"holiday"},{"date":"2026-09-06","frat":"Sig Ep + ZBT","name":"Catalina Wine Mixer @ ZBT"},{"date":"2026-09-07","frat":"Holiday","name":"Labor Day","category":"holiday"},{"date":"2026-09-08","frat":"Kappa Alpha","name":"Pledgeline Late Night"},{"date":"2026-09-10","frat":"FIJI","name":"Wedding Crashers Semi Formal"},{"date":"2026-09-10","frat":"Kappa Alpha","name":"Southern Nights Semi-Formal"},{"date":"2026-09-10","frat":"Sig Ep","name":"Semi-Formal"},{"date":"2026-09-10","frat":"ZBT","name":"Pre Ohio St Tab"},{"date":"2026-09-11","frat":"Kappa Sigma","name":"Kappa Sig Boiler Room"},{"date":"2026-09-11","frat":"Phi Psi","name":"Ohio State Weekend Party"},{"date":"2026-09-11","frat":"Texas Delts","name":"Shoreditch w/ Skilah, Jeckett, & Chad Leedy"},{"date":"2026-09-12","frat":"FIJI","name":"Ohio State Tailgate + Late Night"},{"date":"2026-09-12","frat":"Kappa Alpha","name":"Ohio State Tailgate"},{"date":"2026-09-12","frat":"Kappa Sigma","name":"Ohio State Tailgate"},{"date":"2026-09-12","frat":"Phi Psi","name":"Ohio State Tailgate with BBQ"},{"date":"2026-09-12","frat":"SAE","name":"Ohio State Home \u2014 on the field","time":"6:30 PM"},{"date":"2026-09-12","frat":"Sig Ep","name":"Ohio State Tailgate"},{"date":"2026-09-12","frat":"Texas Delts","name":"OSU Tailgate (Joint Ohio State Delt) w/ Lane Bricker"},{"date":"2026-09-12","frat":"ZBT","name":"Ohio St Tailgate with W/OSU DKE + Ohio St Late Night with W/OSU DKE"},{"date":"2026-09-16","frat":"Sig Ep + ZBT","name":"Pregame Comedy"},{"date":"2026-09-17","frat":"Kappa Sigma","name":"Sweetheart Night"},{"date":"2026-09-17","frat":"ZBT","name":"Derby Days Semi Formal"},{"date":"2026-09-18","frat":"FIJI","name":"FIJI Parents Weekend Late Night"},{"date":"2026-09-18","frat":"Phi Psi","name":"Parents Weekend & UTSA Tailgate with BBQ","end":"2026-09-19"},{"date":"2026-09-18","frat":"SAE","name":"Parents Weekend","end":"2026-09-19"},{"date":"2026-09-18","frat":"Sig Ep","name":"Disco"},{"date":"2026-09-18","frat":"Texas Delts","name":"Delt @ Riviere w/ Chief Keef","time":"11:00 PM"},{"date":"2026-09-18","frat":"Texas Delts","name":"Parents Weekend / UTSA Tailgate","end":"2026-09-19"},{"date":"2026-09-19","frat":"FIJI","name":"Parents Weekend Tailgate + Late Night"},{"date":"2026-09-19","frat":"Kappa Alpha","name":"PARENTS WEEKEND (UTSA Tailgate)"},{"date":"2026-09-19","frat":"Kappa Sigma","name":"UTSA Tailgate"},{"date":"2026-09-19","frat":"SAE","name":"UTSA Home","time":"7:00 PM"},{"date":"2026-09-19","frat":"Sig Ep","name":"UTSA Tailgate"},{"date":"2026-09-19","frat":"ZBT","name":"UTSA Tailgate"},{"date":"2026-09-24","frat":"Kappa Sigma","name":"Cabo Date Event"},{"date":"2026-09-24","frat":"Texas Delts","name":"Semi Formal #1 @ TBA"},{"date":"2026-09-25","frat":"Kappa Sigma","name":"Cabo"},{"date":"2026-09-25","frat":"Phi Psi","name":"Phi Psi Friday Late Night"},{"date":"2026-09-25","frat":"SAE","name":"Pirates"},{"date":"2026-09-26","frat":"FIJI","name":"Away @ Tennessee"},{"date":"2026-09-26","frat":"Kappa Alpha","name":"Margaritaville (Away @ Tennessee)"},{"date":"2026-09-26","frat":"Phi Psi","name":"Tennessee Big Screen Watch Party with Breakfast Tacos"},{"date":"2026-09-26","frat":"SAE","name":"Tennessee Away","time":"11:00 AM"},{"date":"2026-09-26","frat":"Sig Ep","name":"Tennessee Watch Party"},{"date":"2026-09-26","frat":"Texas Delts","name":"Texas vs Tennessee Watch Party"},{"date":"2026-10-01","frat":"FIJI","name":"FIJI Hugs"},{"date":"2026-10-02","frat":"Phi Psi","name":"ACL Weekend #1","end":"2026-10-04"},{"date":"2026-10-02","frat":"SAE","name":"Freshman Pledge Class Retreat"},{"date":"2026-10-02","frat":"ZBT","name":"ACL Weekend + Senior Vegas","end":"2026-10-04"},{"date":"2026-10-09","frat":"FIJI","name":"OU Weekend","end":"2026-10-10"},{"date":"2026-10-09","frat":"Kappa Alpha","name":"Red River Rivalry Weekend","end":"2026-10-12"},{"date":"2026-10-09","frat":"Kappa Sigma","name":"OU Weekend","end":"2026-10-11"},{"date":"2026-10-09","frat":"Phi Psi","name":"TX vs. OU Dallas Weekend","end":"2026-10-11"},{"date":"2026-10-09","frat":"SAE","name":"Texas OU Weekend","end":"2026-10-10"},{"date":"2026-10-09","frat":"Sig Ep","name":"Texas / OU Weekend","end":"2026-10-11"},{"date":"2026-10-09","frat":"Texas Delts","name":"Rodeo Cold"},{"date":"2026-10-09","frat":"Texas Delts","name":"TX/OU Weekend in Dallas","end":"2026-10-10"},{"date":"2026-10-09","frat":"ZBT","name":"Red River Rivalry Weekend","end":"2026-10-11"},{"date":"2026-10-10","frat":"Texas Delts","name":"Cactus Social"},{"date":"2026-10-12","frat":"Holiday","name":"Indigenous Peoples\u2019 Day / Columbus Day","category":"holiday"},{"date":"2026-10-15","frat":"Phi Psi","name":"Sweetheart Night"},{"date":"2026-10-15","frat":"Texas Delts","name":"Chapter Tab"},{"date":"2026-10-16","frat":"Sig Ep","name":"Parents Weekend","end":"2026-10-18"},{"date":"2026-10-16","frat":"ZBT","name":"Parents Weekend","end":"2026-10-18"},{"date":"2026-10-17","frat":"FIJI","name":"Florida Tailgate + Late Night"},{"date":"2026-10-17","frat":"Kappa Alpha","name":"ALUMNI WEEKEND (Florida Tailgate)"},{"date":"2026-10-17","frat":"Kappa Sigma","name":"Parents Weekend Tailgate + Late Night"},{"date":"2026-10-17","frat":"Phi Psi","name":"Post-Florida Late Night"},{"date":"2026-10-17","frat":"SAE","name":"Florida Home @ Morning (Alumni Weekend)"},{"date":"2026-10-17","frat":"Sig Ep","name":"Florida Tailgate"},{"date":"2026-10-17","frat":"Texas Delts","name":"Florida Tailgate / Alumni Weekend w/ Jac with no K"},{"date":"2026-10-17","frat":"ZBT","name":"Parents Weekend Florida Tailgate"},{"date":"2026-10-22","frat":"FIJI","name":"Dynamic Duos Semi Formal"},{"date":"2026-10-22","frat":"ZBT","name":"Sweetheart Night"},{"date":"2026-10-23","frat":"FIJI","name":"Fundraising Event (Womz Of Futurebirds)"},{"date":"2026-10-23","frat":"Texas Delts","name":"Stampede w/ Down Hazy & The Gringos"},{"date":"2026-10-24","frat":"FIJI","name":"Ole Miss Tailgate + Late Night"},{"date":"2026-10-24","frat":"Kappa Alpha","name":"Ole Miss Tailgate (w/ Ole Miss KA)"},{"date":"2026-10-24","frat":"Kappa Sigma","name":"Ole Miss Tailgate"},{"date":"2026-10-24","frat":"Phi Psi","name":"Alumni Weekend & Ole Miss Tailgate with BBQ + Fall '26 Late Night"},{"date":"2026-10-24","frat":"SAE","name":"Ole Miss Home (Tailgate with Ole Miss Phi Delt) \u2014 game time TBD, afternoon or night"},{"date":"2026-10-24","frat":"Sig Ep + SAE","name":"Ole Miss Late Night @ SAE"},{"date":"2026-10-24","frat":"Sig Ep + ZBT","name":"Ole Miss Tailgate @ Sig Ep"},{"date":"2026-10-24","frat":"Texas Delts","name":"Ole Miss Tailgate w/ Caleb Mills"},{"date":"2026-10-29","frat":"FIJI + ZBT","name":"Halloween @ FIJI"},{"date":"2026-10-30","frat":"Kappa Sigma","name":"Halloween Date Event"},{"date":"2026-10-30","frat":"Phi Psi","name":"Shipwreck Party"},{"date":"2026-10-30","frat":"SAE","name":"Vegas"},{"date":"2026-10-30","frat":"Sig Ep","name":"Halloween"},{"date":"2026-10-31","frat":"FIJI","name":"Mississippi State Tailgate + Late Night"},{"date":"2026-10-31","frat":"Holiday","name":"Halloween","category":"holiday"},{"date":"2026-10-31","frat":"Kappa Alpha","name":"Haunted Manor"},{"date":"2026-10-31","frat":"Kappa Sigma","name":"Mississippi State Tailgate"},{"date":"2026-10-31","frat":"Phi Psi","name":"Mississippi State Tailgate with BBQ"},{"date":"2026-10-31","frat":"SAE","name":"Mississippi State Home @ Night"},{"date":"2026-10-31","frat":"Sig Ep","name":"Mississippi State Tailgate"},{"date":"2026-10-31","frat":"Texas Delts","name":"MS. State Tailgate w/ The Barn Boys & Brian Tyler"},{"date":"2026-10-31","frat":"ZBT","name":"Mississippi St Tailgate (On Build)"},{"date":"2026-11-05","frat":"FIJI","name":"Oktoberfest"},{"date":"2026-11-05","frat":"Phi Psi","name":"Casino Night"},{"date":"2026-11-05","frat":"Texas Delts","name":"Semi-Formal #2 @ Riviere w/ Louisiana Surf Department"},{"date":"2026-11-06","frat":"Kappa Sigma","name":"Duck Hunt"},{"date":"2026-11-06","frat":"ZBT","name":"To Be Announced"},{"date":"2026-11-07","frat":"FIJI","name":"Away @ Missouri"},{"date":"2026-11-07","frat":"Kappa Alpha","name":"Y2KA"},{"date":"2026-11-07","frat":"Phi Psi","name":"Mizzou (Away)"},{"date":"2026-11-07","frat":"SAE","name":"Missouri Away @ Morning"},{"date":"2026-11-07","frat":"Sig Ep","name":"Missouri Watch Party"},{"date":"2026-11-07","frat":"Texas Delts","name":"Texas vs Missouri Watch Party @ Cabana Club"},{"date":"2026-11-11","frat":"Holiday","name":"Veterans Day","category":"holiday"},{"date":"2026-11-12","frat":"Kappa Alpha","name":"Junior/Senior Wurstfest Formal"},{"date":"2026-11-12","frat":"Kappa Sigma","name":"Wurstfest Date Event"},{"date":"2026-11-12","frat":"Phi Psi","name":"Upperclassmen Date Event"},{"date":"2026-11-12","frat":"Texas Delts","name":"Wurstfest"},{"date":"2026-11-13","frat":"FIJI","name":"NOLA Formal Away @ LSU","end":"2026-11-14"},{"date":"2026-11-13","frat":"Kappa Alpha","name":"Party w/ LSU KA"},{"date":"2026-11-13","frat":"SAE","name":"LSU Away @ TBD Afternoon/Night with NOLA Formal","end":"2026-11-14"},{"date":"2026-11-14","frat":"Kappa Alpha","name":"Away @ LSU (Tailgate w/ LSU KA)"},{"date":"2026-11-14","frat":"Phi Psi","name":"LSU (Away)"},{"date":"2026-11-14","frat":"Sig Ep","name":"LSU (Away)"},{"date":"2026-11-14","frat":"Texas Delts","name":"Texas vs LSU Watch Party"},{"date":"2026-11-17","frat":"Kappa Sigma","name":"@ LSU"},{"date":"2026-11-19","frat":"FIJI","name":"FIJI 80s"},{"date":"2026-11-19","frat":"Phi Psi","name":"Fall '25/'26 Late Night"},{"date":"2026-11-19","frat":"Sig Ep","name":"Time Travel"},{"date":"2026-11-20","frat":"Kappa Sigma","name":"Pre Arkansas Tab"},{"date":"2026-11-20","frat":"SAE","name":"Jungle 1.0"},{"date":"2026-11-20","frat":"ZBT","name":"Pat Os"},{"date":"2026-11-21","frat":"FIJI","name":"Arkansas Tailgate + Late Night"},{"date":"2026-11-21","frat":"Kappa Alpha","name":"Arkansas Tailgate"},{"date":"2026-11-21","frat":"Kappa Sigma","name":"Arkansas Tailgate"},{"date":"2026-11-21","frat":"Phi Psi","name":"Arkansas Tailgate with BBQ"},{"date":"2026-11-21","frat":"SAE","name":"Arkansas Home @ Afternoon (Jungle 2.0)"},{"date":"2026-11-21","frat":"Sig Ep","name":"Arkansas Tailgate"},{"date":"2026-11-21","frat":"Texas Delts","name":"Arkansas Tailgate (joint Arkansas KA) w/ Nether Hour & LimeCreek"},{"date":"2026-11-21","frat":"ZBT","name":"Arkansas Tailgate (On Build)"},{"date":"2026-11-22","end":"2026-11-28","frat":"Holiday","name":"Thanksgiving Break","category":"holiday"},{"date":"2026-11-26","frat":"Holiday","name":"Thanksgiving Day","category":"holiday"},{"date":"2026-11-27","frat":"FIJI","name":"Away @ A&M"},{"date":"2026-11-27","frat":"Phi Psi","name":"Texas A&M (Away)"},{"date":"2026-11-27","frat":"SAE","name":"Lone Star Showdown Away","time":"6:30 PM"},{"date":"2026-11-27","frat":"Sig Ep","name":"Texas A&M (Away)"},{"date":"2026-11-27","frat":"Texas Delts","name":"TX vs TX A&M @ TBD"},{"date":"2026-11-28","frat":"Kappa Alpha","name":"Away @ Texas A&M"},{"date":"2026-11-28","frat":"Kappa Sigma","name":"@ A&M"},{"date":"2026-12-01","frat":"ZBT","name":"Winter Formal (December TBD)"},{"date":"2026-12-03","frat":"FIJI","name":"Christmas Formal"},{"date":"2026-12-03","frat":"Sig Ep","name":"Christmas Formal"},{"date":"2026-12-04","frat":"Kappa Alpha","name":"Christmas Formal"},{"date":"2026-12-04","frat":"Kappa Sigma","name":"Winter Formal"},{"date":"2026-12-04","frat":"Texas Delts","name":"Christmas Formal w/ Nik Parr & The Selfless Lovers","end":"2026-12-05"},{"date":"2026-12-05","frat":"FIJI","name":"SEC Championship"},{"date":"2026-12-05","frat":"Kappa Alpha","name":"SEC Championship"},{"date":"2026-12-05","frat":"Phi Psi","name":"Winter Formal"},{"date":"2026-12-05","frat":"SAE","name":"Christmas Formal \u2014 Subject to Change"},{"date":"2026-12-07","frat":"FIJI","name":"Last Day of School"},{"date":"2026-12-07","frat":"Kappa Alpha","name":"Last Day of Classes"},{"date":"2026-12-07","frat":"Kappa Sigma","name":"Sweater Party"},{"date":"2026-12-07","frat":"Phi Psi","name":"Last Day of Class"},{"date":"2026-12-07","frat":"SAE","name":"Last day of Class"},{"date":"2026-12-07","frat":"Sig Ep","name":"Last day of class"}];
+let activeFrat='All', remoteEvents=[], sb=null, isAdmin=false;
+const frats=[...new Set(BUNDLED_EVENTS.filter(e=>e.frat!=='Holiday').flatMap(e=>e.frat.split(' + ')))].sort(), filters=document.getElementById('filters'), calendar=document.getElementById('calendar'), search=document.getElementById('search'), month=document.getElementById('month');
+function D(s){let [y,m,d]=s.split('-').map(Number);return new Date(y,m-1,d)} function today(){let d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`}
+function wk(d){let x=new Date(d),m=new Date(x);m.setDate(x.getDate()-((x.getDay()+6)%7));return m.toISOString().slice(0,10)} function wt(d){let x=new Date(d),m=new Date(x);m.setDate(x.getDate()-((x.getDay()+6)%7));let s=new Date(m);s.setDate(m.getDate()+6),f=y=>y.toLocaleDateString(undefined,{month:'short',day:'numeric'});return `${f(m)} – ${f(s)}`}
+
+function eventFrats(e){
+  return e.frat==='Holiday'?['Holiday']:String(e.frat).split(' + ');
+}
+function fratClass(f){
+  return f.toLowerCase().replace(/[^a-z0-9]+/g,'-');
+}
+function fratTitleHTML(e){
+  if(e.frat==='Holiday')return '';
+  return eventFrats(e).map(f=>`<span class="title-frat frat-title-${fratClass(f)}">${f}</span>`).join(' <span class="joint-plus">+</span> ');
+}
+
+function eventColorClass(e){
+  if(e.frat==='Holiday') return 'event-holiday';
+  const fs=eventFrats(e);
+  if(fs.length>1) return 'event-joint '+fs.map(f=>'event-'+fratClass(f)).join(' ');
+  return 'event-'+fratClass(fs[0]);
+}
+function cat(e){
+  if(e.category)return e.category;
+  let n=(e.name||'').toLowerCase();
+
+  if(/formal|date event|date party|sweetheart|wedding|christmas formal|winter formal|wurstfest formal/.test(n))return'formal';
+
+  if(/tailgate|watch party|texas state|txst|ohio state|ohio st|utsa|tennessee|florida|ole miss|mississippi state|mississippi st|missouri|mizzou|lsu|arkansas|a&m|football|game|red river|ou weekend|texas \/ ou|tx\/ou|away @|home @/.test(n))return'football';
+
+  if(/tab|bar|victory lap|riviere|vulcan gas|maggie mae|cabana club|chapter tab|back to school tab|back 2 school tab|pre ohio st tab|pre arkansas tab/.test(n))return'bar';
+
+  if(/parents weekend|parent|alumni weekend|family/.test(n))return'parents';
+
+  if(/late night|latenight|party|disco|boiler room|shipwreck|vegas|pirates|olympus|casino|y2ka|haunted|halloween|jungle|catalina|rodeo|stampede|island|80's|80s|time travel|oktoberfest|wurstfest|hugs|duck hunt|margaritaville|shoreditch|cold|cactus social|fall '26|fall '25|fundraising event|bid day|bid-day|back to school party|back 2 school party|welcome night|theme night/.test(n))return'party';
+
+  if(e.frat==='Holiday')return'holiday';
+  return'other';
+}
+function allEvents(){return remoteEvents.length?remoteEvents:BUNDLED_EVENTS}
+function chips(){filters.innerHTML='';let a=document.createElement('button');a.className='chip '+(activeFrat==='All'?'active':'');a.textContent='All';a.onclick=()=>{activeFrat='All';chips();render()};filters.appendChild(a);frats.forEach(f=>{let b=document.createElement('button');b.className='chip '+(activeFrat===f?'active':'');b.textContent=f;b.onclick=()=>{activeFrat=f;chips();render()};filters.appendChild(b)})}
+
+function parseTimeMinutes(t){
+  if(!t)return null;
+  const m=String(t).trim().match(/(\d{1,2})(?::(\d{2}))?\s*(AM|PM)/i);
+  if(!m)return null;
+  let h=Number(m[1]),min=Number(m[2]||0),ap=m[3].toUpperCase();
+  if(ap==='PM'&&h!==12)h+=12;
+  if(ap==='AM'&&h===12)h=0;
+  return h*60+min;
+}
+function dayOrder(e){
+  const n=(e.name||'').toLowerCase();
+  const explicit=parseTimeMinutes(e.time);
+  if(explicit!==null)return explicit;
+
+  if(/breakfast|morning/.test(n))return 9*60;
+  if(/tailgate/.test(n))return 13*60;
+  if(/watch party|game|football|home|away @|away$/.test(n))return 15*60;
+  if(/parents weekend|alumni weekend|family/.test(n))return 16*60;
+  if(/tab|bar|victory lap|riviere|vulcan gas|maggie mae|cabana club/.test(n))return 20*60;
+  if(/formal|date event|date party|sweetheart|wedding/.test(n))return 21*60;
+  if(/late night|latenight/.test(n))return 23*60+30;
+  if(/party|disco|boiler room|shipwreck|vegas|pirates|olympus|casino|y2ka|haunted|halloween|jungle|catalina|rodeo|stampede|island|80's|80s|time travel|oktoberfest|wurstfest|hugs|duck hunt|margaritaville|shoreditch/.test(n))return 22*60+30;
+
+  return 18*60;
+}
+function smartEventSort(a,b){
+  const dc=a.date.localeCompare(b.date);
+  if(dc!==0)return dc;
+  const tc=dayOrder(a)-dayOrder(b);
+  if(tc!==0)return tc;
+  return a.frat.localeCompare(b.frat)||a.name.localeCompare(b.name);
+}
+function render(){let q=search.value.toLowerCase(),m=month.value,now=new Date(),start=new Date(now.getFullYear(),now.getMonth(),now.getDate());let arr=allEvents().filter(e=>D(e.end||e.date)>=start&&(e.frat==='Holiday'||activeFrat==='All'||eventFrats(e).includes(activeFrat))&&(m==='all'||String(D(e.date).getMonth())===m)&&(!q||`${e.name} ${e.frat} ${e.time||''}`.toLowerCase().includes(q))).sort(smartEventSort);calendar.innerHTML='';if(!arr.length){calendar.innerHTML='<p class="empty">No upcoming events match those filters.</p>';return}let groups={};arr.forEach(e=>{let k=D(e.date).toLocaleDateString(undefined,{month:'long',year:'numeric'});(groups[k]??=[]).push(e)});Object.entries(groups).forEach(([mn,items])=>{let sec=document.createElement('section');sec.className='month';sec.innerHTML=`<h2>${mn}</h2>`;let lw='',ld='';items.forEach(e=>{let d=D(e.date),w=wk(d);if(w!==lw){lw=w;ld='';let x=document.createElement('div');x.className='week';x.innerHTML=`<span>Week of ${wt(d)}</span>`;sec.appendChild(x)}if(e.date!==ld){ld=e.date;let x=document.createElement('div');x.className='dayhead';x.innerHTML=`<strong>${d.toLocaleDateString(undefined,{weekday:'long'})}</strong><span>${d.toLocaleDateString(undefined,{month:'long',day:'numeric'})}</span>`;sec.appendChild(x)}let r=document.createElement('article');r.className=`event ${eventColorClass(e)} ${e.date===today()?'today':''}`;r.dataset.date=e.date;let range=e.end?`${d.toLocaleDateString(undefined,{month:'short',day:'numeric'})}–${D(e.end).toLocaleDateString(undefined,{month:'short',day:'numeric'})}`:d.toLocaleDateString(undefined,{month:'short',day:'numeric'});r.innerHTML=`<div class="datebox"><div class="d">${d.getDate()}</div><div class="w">${d.toLocaleDateString(undefined,{weekday:'short'}).toUpperCase()}</div></div><div><h3>${e.frat==='Holiday'?e.name:`${fratTitleHTML(e)} — ${e.name}`}</h3><div class="meta">${range}${e.time?' • '+e.time:''}</div></div>`;sec.appendChild(r)});calendar.appendChild(sec)})}
+search.oninput=render;month.onchange=render;document.getElementById('todayBtn').onclick=()=>{month.value='all';search.value='';activeFrat='All';chips();render();let el=[...document.querySelectorAll('.event')].find(x=>x.dataset.date===today());if(el)el.scrollIntoView({behavior:'smooth',block:'center'})};
+function showLogin(){document.getElementById('loginPanel').classList.remove('hidden');document.getElementById('editorPanel').classList.add('hidden')} function showEditor(){document.getElementById('loginPanel').classList.add('hidden');document.getElementById('editorPanel').classList.remove('hidden');adminList()}
+document.getElementById('adminBtn').onclick=()=>document.getElementById('modal').classList.remove('hidden');document.getElementById('close').onclick=()=>document.getElementById('modal').classList.add('hidden');
+async function init(){if(!window.SUPABASE_URL||window.SUPABASE_URL.includes('YOUR_'))return;sb=window.supabase.createClient(window.SUPABASE_URL,window.SUPABASE_ANON_KEY);await load();let {data:{session}}=await sb.auth.getSession();isAdmin=!!(session&&session.user?.email===window.ADMIN_EMAIL);isAdmin?showEditor():showLogin()}
+async function load(){if(!sb)return;let {data,error}=await sb.from('events').select('*').order('date',{ascending:true});if(!error&&data&&data.length){remoteEvents=data.map(e=>({id:e.id,date:e.date,end:e.end_date||undefined,frat:e.frat,name:e.name,time:e.time||undefined,category:e.category||undefined}));render();if(isAdmin)adminList()}}
+document.getElementById('login').onclick=async()=>{let s=document.getElementById('loginStatus');if(!sb){s.textContent='Online editing is not configured yet. See SETUP.txt.';return}let email=document.getElementById('email').value.trim(),password=document.getElementById('password').value,{data,error}=await sb.auth.signInWithPassword({email,password});if(error){s.textContent=error.message;return}if(data.user?.email!==window.ADMIN_EMAIL){await sb.auth.signOut();s.textContent='This is not the admin account.';return}isAdmin=true;showEditor()}
+document.getElementById('logout').onclick=async()=>{if(sb)await sb.auth.signOut();isAdmin=false;showLogin()}
+document.getElementById('save').onclick=async()=>{let s=document.getElementById('editorStatus');if(!sb||!isAdmin){s.textContent='Sign in as admin first.';return}let date=document.getElementById('date').value,name=document.getElementById('name').value.trim(),frat=document.getElementById('frat').value,joint=document.getElementById('jointFrat').value,category=document.getElementById('category').value,timeRaw=document.getElementById('time').value;if(joint&&joint!==frat)frat=frat+' + '+joint;if(!date||!name){s.textContent='Add a date and event name.';return}let time='';if(timeRaw){let [h,m]=timeRaw.split(':').map(Number),ap=h>=12?'PM':'AM';h=h%12||12;time=`${h}:${String(m).padStart(2,'0')} ${ap}`}let {error}=await sb.from('events').insert([{date,frat,name,time,category}]);if(error){s.textContent=error.message;return}s.textContent='Saved — everyone will see it.';document.getElementById('name').value='';document.getElementById('date').value='';document.getElementById('time').value='';await load()}
+async function adminList(){let box=document.getElementById('adminList');if(!isAdmin||!remoteEvents.length){box.innerHTML='';return}box.innerHTML='<h3 style="font-size:13px">Online events</h3>'+remoteEvents.map(e=>`<div class="admin-item"><div><strong style="font-size:11px">${e.name}</strong><br><span>${e.frat} · ${e.date}</span></div><button class="danger" onclick="del('${e.id}')">Delete</button></div>`).join('')}
+async function del(id){if(!sb||!isAdmin)return;let {error}=await sb.from('events').delete().eq('id',id);if(error){alert(error.message);return}await load()}
+chips();render();init();
+</script></body></html>
