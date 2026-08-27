@@ -79,7 +79,7 @@ insert into public.events (date,end_date,frat,name,time,category) values
 ('2026-09-26',NULL,'SAE','Tennessee Away','11:00 AM',NULL),
 ('2026-09-26',NULL,'Sig Ep','Tennessee Watch Party',NULL,NULL),
 ('2026-09-26',NULL,'Texas Delts','Texas vs Tennessee Watch Party',NULL,NULL),
-('2026-10-01',NULL,'FIJI','FIJI Hugs',NULL,NULL),
+('2026-10-01',NULL,'FIJI','FIJI Haus',NULL,NULL),
 ('2026-10-02','2026-10-04','Phi Psi','ACL Weekend #1',NULL,NULL),
 ('2026-10-02',NULL,'SAE','Freshman Pledge Class Retreat',NULL,NULL),
 ('2026-10-02','2026-10-04','ZBT','ACL Weekend + Senior Vegas',NULL,NULL),
