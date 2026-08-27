@@ -6,6 +6,7 @@ create table if not exists public.events (
   name text not null,
   time text,
   category text,
+  sort_order integer,
   created_at timestamptz not null default now()
 );
 

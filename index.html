@@ -684,6 +684,48 @@ body{
     linear-gradient(180deg,#fbfaf8 0%,#f6f2ef 100%)!important;
 }
 
+
+/* V15 admin move/edit controls */
+.admin-controls{
+  display:flex;
+  gap:5px;
+  align-items:center;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+}
+.admin-controls button{
+  border:1px solid #e5dce0;
+  background:#fff;
+  color:#66545e;
+  border-radius:999px;
+  padding:5px 8px;
+  font-size:10px;
+  cursor:pointer;
+}
+.admin-controls button:hover{background:#faf4f7}
+.admin-controls button:disabled{
+  opacity:.3;
+  cursor:default;
+}
+.admin-controls .danger{
+  background:#fff0f0;
+  color:#a53b3b;
+  border-color:#f2d2d2;
+}
+.edit-panel{
+  margin-top:18px;
+  padding:14px;
+  border:1px solid #eadfe5;
+  border-radius:14px;
+  background:#fcfafb;
+}
+.edit-panel h3{
+  margin:0 0 12px;
+  font-family:Georgia,serif;
+  font-size:18px;
+  color:#5f4b56;
+}
+
 </style>
 </head>
 <body>
@@ -693,7 +735,24 @@ body{
 
 <div id="modal" class="modal hidden"><div class="card"><div class="cardhead"><div><div class="k">PRIVATE ADMIN</div><h2>Manage calendar</h2></div><button id="close" class="close">×</button></div>
 <div id="loginPanel" class="form"><label>Email<input id="email" type="email"></label><label>Password<input id="password" type="password"></label><button id="login" class="btn">Sign in</button><div id="loginStatus" class="status"></div></div>
-<div id="editorPanel" class="hidden"><div class="form"><label>Fraternity<select id="frat"><option>FIJI</option><option>Texas Delts</option><option>Kappa Sigma</option><option>Phi Psi</option><option>Sig Ep</option><option>Kappa Alpha</option><option>ZBT</option><option>SAE</option></select></label><label>Joint with (optional)<select id="jointFrat"><option value="">None</option><option>FIJI</option><option>Texas Delts</option><option>Kappa Sigma</option><option>Phi Psi</option><option>Sig Ep</option><option>Kappa Alpha</option><option>ZBT</option><option>SAE</option></select></label><label>Event name<input id="name"></label><div class="row"><label>Date<input id="date" type="date"></label><label>Time<input id="time" type="time"></label></div><label>Category<select id="category"><option value="formal">Date Party / Formal</option><option value="football">Football Event</option><option value="bar">Bar Tab</option><option value="parents">Parents / Family</option><option value="other">Other</option></select></label><button id="save" class="btn">Add Event</button><button id="logout" class="btn secondary">Sign out</button><div id="editorStatus" class="status"></div></div><div id="adminList" class="admin-list"></div></div></div></div>
+<div id="editorPanel" class="hidden"><div class="form"><label>Fraternity<select id="frat"><option>FIJI</option><option>Texas Delts</option><option>Kappa Sigma</option><option>Phi Psi</option><option>Sig Ep</option><option>Kappa Alpha</option><option>ZBT</option><option>SAE</option></select></label><label>Joint with (optional)<select id="jointFrat"><option value="">None</option><option>FIJI</option><option>Texas Delts</option><option>Kappa Sigma</option><option>Phi Psi</option><option>Sig Ep</option><option>Kappa Alpha</option><option>ZBT</option><option>SAE</option></select></label><label>Event name<input id="name"></label><div class="row"><label>Date<input id="date" type="date"></label><label>Time<input id="time" type="time"></label></div><label>Category<select id="category"><option value="formal">Date Party / Formal</option><option value="football">Football Event</option><option value="bar">Bar Tab</option><option value="parents">Parents / Family</option><option value="other">Other</option></select></label><button id="save" class="btn">Add Event</button><button id="logout" class="btn secondary">Sign out</button><div id="editorStatus" class="status"></div></div>
+<div id="editEventPanel" class="hidden edit-panel">
+  <h3>Edit / move event</h3>
+  <input id="editId" type="hidden">
+  <div class="form">
+    <label>Event name<input id="editName"></label>
+    <label>Fraternity<input id="editFrat"></label>
+    <div class="row">
+      <label>Date<input id="editDate" type="date"></label>
+      <label>Time<input id="editTime" placeholder="Example: 8:00 PM"></label>
+    </div>
+    <button id="updateEventBtn" class="btn" type="button">Save changes</button>
+    <button id="cancelEditBtn" class="btn secondary" type="button">Cancel</button>
+    <div id="editStatus" class="status"></div>
+  </div>
+</div>
+<div id="adminList" class="admin-list"></div>
+</div></div></div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="config.js"></script>
@@ -769,6 +828,16 @@ function dayOrder(e){
 function smartEventSort(a,b){
   const dc=a.date.localeCompare(b.date);
   if(dc!==0)return dc;
+
+  const ao=(a.sort_order===null||a.sort_order===undefined)?null:Number(a.sort_order);
+  const bo=(b.sort_order===null||b.sort_order===undefined)?null:Number(b.sort_order);
+
+  if(ao!==null || bo!==null){
+    if(ao===null)return 1;
+    if(bo===null)return -1;
+    if(ao!==bo)return ao-bo;
+  }
+
   const tc=dayOrder(a)-dayOrder(b);
   if(tc!==0)return tc;
   return a.frat.localeCompare(b.frat)||a.name.localeCompare(b.name);
@@ -778,11 +847,110 @@ search.oninput=render;month.onchange=render;document.getElementById('todayBtn').
 function showLogin(){document.getElementById('loginPanel').classList.remove('hidden');document.getElementById('editorPanel').classList.add('hidden')} function showEditor(){document.getElementById('loginPanel').classList.add('hidden');document.getElementById('editorPanel').classList.remove('hidden');adminList()}
 document.getElementById('adminBtn').onclick=()=>document.getElementById('modal').classList.remove('hidden');document.getElementById('close').onclick=()=>document.getElementById('modal').classList.add('hidden');
 async function init(){if(!window.SUPABASE_URL||window.SUPABASE_URL.includes('YOUR_'))return;sb=window.supabase.createClient(window.SUPABASE_URL,window.SUPABASE_ANON_KEY);await load();let {data:{session}}=await sb.auth.getSession();isAdmin=!!(session&&session.user?.email===window.ADMIN_EMAIL);isAdmin?showEditor():showLogin()}
-async function load(){if(!sb)return;let {data,error}=await sb.from('events').select('*').order('date',{ascending:true});if(!error&&data&&data.length){remoteEvents=data.map(e=>({id:e.id,date:e.date,end:e.end_date||undefined,frat:e.frat,name:e.name,time:e.time||undefined,category:e.category||undefined}));render();if(isAdmin)adminList()}}
+async function load(){if(!sb)return;let {data,error}=await sb.from('events').select('*').order('date',{ascending:true});if(!error&&data&&data.length){remoteEvents=data.map(e=>({id:e.id,date:e.date,end:e.end_date||undefined,frat:e.frat,name:e.name,time:e.time||undefined,category:e.category||undefined,sort_order:e.sort_order??null}));render();if(isAdmin)adminList()}}
 document.getElementById('login').onclick=async()=>{let s=document.getElementById('loginStatus');if(!sb){s.textContent='Online editing is not configured yet. See SETUP.txt.';return}let email=document.getElementById('email').value.trim(),password=document.getElementById('password').value,{data,error}=await sb.auth.signInWithPassword({email,password});if(error){s.textContent=error.message;return}if(data.user?.email!==window.ADMIN_EMAIL){await sb.auth.signOut();s.textContent='This is not the admin account.';return}isAdmin=true;showEditor()}
 document.getElementById('logout').onclick=async()=>{if(sb)await sb.auth.signOut();isAdmin=false;showLogin()}
 document.getElementById('save').onclick=async()=>{let s=document.getElementById('editorStatus');if(!sb||!isAdmin){s.textContent='Sign in as admin first.';return}let date=document.getElementById('date').value,name=document.getElementById('name').value.trim(),frat=document.getElementById('frat').value,joint=document.getElementById('jointFrat').value,category=document.getElementById('category').value,timeRaw=document.getElementById('time').value;if(joint&&joint!==frat)frat=frat+' + '+joint;if(!date||!name){s.textContent='Add a date and event name.';return}let time='';if(timeRaw){let [h,m]=timeRaw.split(':').map(Number),ap=h>=12?'PM':'AM';h=h%12||12;time=`${h}:${String(m).padStart(2,'0')} ${ap}`}let {error}=await sb.from('events').insert([{date,frat,name,time,category}]);if(error){s.textContent=error.message;return}s.textContent='Saved — everyone will see it.';document.getElementById('name').value='';document.getElementById('date').value='';document.getElementById('time').value='';await load()}
-async function adminList(){let box=document.getElementById('adminList');if(!isAdmin||!remoteEvents.length){box.innerHTML='';return}box.innerHTML='<h3 style="font-size:13px">Online events</h3>'+remoteEvents.map(e=>`<div class="admin-item"><div><strong style="font-size:11px">${e.name}</strong><br><span>${e.frat} · ${e.date}</span></div><button class="danger" onclick="del('${e.id}')">Delete</button></div>`).join('')}
+
+function sameDayEvents(date){
+  return remoteEvents.filter(e=>e.date===date).sort(smartEventSort);
+}
+
+async function normalizeDayOrder(date){
+  if(!sb||!isAdmin)return;
+  const items=sameDayEvents(date);
+  for(let i=0;i<items.length;i++){
+    if(items[i].id){
+      await sb.from('events').update({sort_order:(i+1)*10}).eq('id',items[i].id);
+    }
+  }
+}
+
+async function moveEvent(id,direction){
+  if(!sb||!isAdmin)return;
+  const current=remoteEvents.find(e=>e.id===id);
+  if(!current)return;
+
+  await normalizeDayOrder(current.date);
+  await load();
+
+  const items=sameDayEvents(current.date);
+  const idx=items.findIndex(e=>e.id===id);
+  const swapIdx=direction==='up'?idx-1:idx+1;
+  if(idx<0||swapIdx<0||swapIdx>=items.length)return;
+
+  const a=items[idx], b=items[swapIdx];
+  const ao=a.sort_order??((idx+1)*10);
+  const bo=b.sort_order??((swapIdx+1)*10);
+
+  await sb.from('events').update({sort_order:bo}).eq('id',a.id);
+  await sb.from('events').update({sort_order:ao}).eq('id',b.id);
+  await load();
+}
+
+function startEdit(id){
+  const e=remoteEvents.find(x=>x.id===id);
+  if(!e)return;
+  document.getElementById('editId').value=e.id;
+  document.getElementById('editName').value=e.name||'';
+  document.getElementById('editFrat').value=e.frat||'';
+  document.getElementById('editDate').value=e.date||'';
+  document.getElementById('editTime').value=e.time||'';
+  document.getElementById('editEventPanel').classList.remove('hidden');
+  document.getElementById('editEventPanel').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+document.getElementById('cancelEditBtn').onclick=()=>{
+  document.getElementById('editEventPanel').classList.add('hidden');
+  document.getElementById('editStatus').textContent='';
+};
+
+document.getElementById('updateEventBtn').onclick=async()=>{
+  const id=document.getElementById('editId').value;
+  const name=document.getElementById('editName').value.trim();
+  const frat=document.getElementById('editFrat').value.trim();
+  const date=document.getElementById('editDate').value;
+  const time=document.getElementById('editTime').value.trim();
+  const status=document.getElementById('editStatus');
+
+  if(!id||!name||!frat||!date){
+    status.textContent='Name, fraternity, and date are required.';
+    return;
+  }
+
+  const {error}=await sb.from('events').update({name,frat,date,time}).eq('id',id);
+  if(error){
+    status.textContent=error.message;
+    return;
+  }
+
+  status.textContent='Saved.';
+  document.getElementById('editEventPanel').classList.add('hidden');
+  await load();
+};
+
+async function adminList(){
+  const box=document.getElementById('adminList');
+  if(!isAdmin||!remoteEvents.length){box.innerHTML='';return}
+
+  const items=[...remoteEvents].sort(smartEventSort);
+  box.innerHTML='<h3 style="font-size:13px">Online events</h3>'+items.map((e,i)=>{
+    const dayItems=items.filter(x=>x.date===e.date);
+    const dayIndex=dayItems.findIndex(x=>x.id===e.id);
+    return `<div class="admin-item">
+      <div>
+        <strong style="font-size:11px">${e.name}</strong><br>
+        <span>${e.frat} · ${e.date}${e.time?' · '+e.time:''}</span>
+      </div>
+      <div class="admin-controls">
+        <button type="button" onclick="moveEvent('${e.id}','up')" ${dayIndex===0?'disabled':''}>↑</button>
+        <button type="button" onclick="moveEvent('${e.id}','down')" ${dayIndex===dayItems.length-1?'disabled':''}>↓</button>
+        <button type="button" onclick="startEdit('${e.id}')">Edit</button>
+        <button class="danger" onclick="del('${e.id}')">Delete</button>
+      </div>
+    </div>`;
+  }).join('');
+}
 async function del(id){if(!sb||!isAdmin)return;let {error}=await sb.from('events').delete().eq('id',id);if(error){alert(error.message);return}await load()}
 chips();render();init();
 </script></body></html>
