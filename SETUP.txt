@@ -74,3 +74,8 @@ V13 visual update:
 - Event cards have stronger borders and soft shadows.
 - Cards lift slightly on hover.
 - Background is a touch darker so white event cards stand out more.
+
+V14 connection update:
+- Supabase connection is filled in.
+- Admin email is set to gracieisbell@gmail.com.
+- Upload this version to the same GitHub/Vercel project.
